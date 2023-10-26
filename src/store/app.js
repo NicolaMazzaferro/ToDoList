@@ -1,4 +1,3 @@
-// app.js
 import { defineStore } from 'pinia';
 
 export const useAppStore = defineStore('app', {
@@ -15,8 +14,17 @@ export const useAppStore = defineStore('app', {
     },
     completeTask(taskIndex) {
       const task = this.tasks[taskIndex];
-      task.completed = true;
-    },    
+      task.completed = !task.completed;
+    
+      if (task.completed) {
+        task.completed = true;
+      } else {
+        const index = this.completedTasks.indexOf(task);
+        if (index > -1) {
+          this.completedTasks.splice(index, 1);
+        }
+      }
+    },  
     deleteTask(task) {
       const index = this.tasks.indexOf(task);
       if (index > -1) {

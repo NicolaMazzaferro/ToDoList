@@ -15,10 +15,10 @@
         </v-btn>
         
         <v-btn icon @click="deleteTask(task)">
-          <v-icon>mdi-archive</v-icon>
+          <v-icon>mdi-delete</v-icon>
         </v-btn>
         <v-btn icon @click="archiveTask(index)">
-          <v-icon>mdi-pencil</v-icon>
+          <v-icon>mdi-archive</v-icon>
         </v-btn>
       </v-list-item>
       
