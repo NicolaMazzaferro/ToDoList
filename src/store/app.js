@@ -4,12 +4,15 @@ export const useAppStore = defineStore('app', {
   state: () => ({
     tasks: [],
     completedTasks: [],
+    username: 'User',
   }),
   getters: {
     getCompletedTasks: (state) => state.completedTasks,
   },
   actions: {
     addTask(task) {
+      task.username = this.username;
+      task.creator = this.username;
       this.tasks.push(task);
     },
     completeTask(taskIndex) {
@@ -38,5 +41,14 @@ export const useAppStore = defineStore('app', {
         this.completedTasks.push(task);
       }
     },
+    setUsername(username) {
+      this.username = username;
+    },
   },
+
+  mutations: {
+    setUsername(username) {
+      this.username = username; // Imposta il nome utente
+    },
+  }
 });
